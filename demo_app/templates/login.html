@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login - QA Task Manager</title>
+  <link rel="icon" href="{{ url_for('static', filename='img/logo.svg') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <span class="title"><img src="{{ url_for('static', filename='img/logo.svg') }}" alt="">QA Task Manager</span>
+  </header>
+
+  <div class="login-row">
+    <img src="{{ url_for('static', filename='img/hero.svg') }}" alt="test results">
+    <div class="login-box">
+      <h1>Login</h1>
+      <p class="small">Please enter your username and password.</p>
+      {% if error %}<div id="error" role="alert">{{ error }}</div>{% endif %}
+      <form method="post">
+        <label>Username <input id="username" name="username"></label>
+        <label>Password <input id="password" name="password" type="password"></label>
+        <button id="login-btn" type="submit">Login</button>
+      </form>
+      <p class="small">Test login: admin / admin123</p>
+    </div>
+  </div>
+</body>
+</html>

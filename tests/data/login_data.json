@@ -1,0 +1,13 @@
+{
+  "valid": [
+    {"username": "admin", "password": "admin123"},
+    {"username": "tester", "password": "test@123"}
+  ],
+  "invalid": [
+    {"username": "admin", "password": "wrong", "error": "Invalid credentials"},
+    {"username": "ghost", "password": "admin123", "error": "Invalid credentials"},
+    {"username": "", "password": "", "error": "Username and password are required"},
+    {"username": "admin", "password": "", "error": "Username and password are required"},
+    {"username": "' OR '1'='1", "password": "' OR '1'='1", "error": "Invalid credentials"}
+  ]
+}

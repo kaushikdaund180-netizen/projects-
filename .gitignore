@@ -1,0 +1,6 @@
+__pycache__/
+.pytest_cache/
+reports/
+*.pyc
+.github/workflows/oracleJdk-27/
+venv/

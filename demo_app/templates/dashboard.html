@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard - QA Task Manager</title>
+  <link rel="icon" href="{{ url_for('static', filename='img/logo.svg') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <span class="title"><img src="{{ url_for('static', filename='img/logo.svg') }}" alt="">QA Task Manager</span>
+    <span>{{ user }} <a id="logout" href="{{ url_for('logout') }}">Logout</a></span>
+  </header>
+
+  <div class="container">
+    <h1 id="welcome">Welcome, {{ user }}</h1>
+    <p class="small">You have {{ items|length }} task(s) in your list.</p>
+
+    <div class="box">
+      <form method="post" action="{{ url_for('add') }}" class="add-row">
+        <input id="item-input" name="item" placeholder="Type a task here">
+        <button id="add-btn" type="submit">Add</button>
+      </form>
+
+      {% if msg %}<div id="msg">{{ msg }}</div>{% endif %}
+
+      <ul id="item-list">
+        {% for i in items %}
+        <li data-id="{{ i.id }}">
+          <span class="name">{{ i.name }}</span>
+          <form method="post" action="{{ url_for('delete', item_id=i.id) }}"><button class="delete-btn">Delete</button></form>
+        </li>
+        {% endfor %}
+      </ul>
+      {% if not items %}<p class="small">No tasks added yet.</p>{% endif %}
+    </div>
+  </div>
+
+  <footer>STQA mini project</footer>
+</body>
+</html>
